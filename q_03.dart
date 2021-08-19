@@ -8,13 +8,15 @@ seguintes campos: nome e valor.
 
 import 'dart:io';
 
+void limparTela() => print("\x1B[2J\x1B[0;0H");           // função para limpar tela
+
 void main(){
 
-   Map<int, String> map = new Map<int, String>();  
+   Map<int, String> map = new Map<int, String>();         // utilizando o map para fazer o CRUD
 
   bool continuar = true;
 
-  while(continuar){
+  while(continuar){                                       
 
     print('Selecione a opção que deseja: ');
     print('1 - Cadastrar');
@@ -38,6 +40,7 @@ void main(){
         nome = stdin.readLineSync()!;
         map[numero] = nome;
         //se adicionar um mesmo numero, vai subscrever
+        limparTela();
       break;
 
       case 2:
@@ -49,6 +52,7 @@ void main(){
         nome = stdin.readLineSync()!;
 
         map[numero] = nome;
+        limparTela();
         break;
 
       case 3: 
@@ -60,7 +64,7 @@ void main(){
         map.remove(numero);
 
         print('Campo removido com sucesso!!!');
-
+        
       break;
 
       case 4: 
@@ -68,17 +72,23 @@ void main(){
       print('Digite o numero do campo que deseja buscar: ');
       numero = int.parse(stdin.readLineSync()!);
 
-      print(map[numero]);
+      if(map[numero] == null)
+        print('Numero não existe no banco.');
+      
+      else
+        print(map[numero]);
+    
+      
       break;
 
       case 5:
 
         print(map);
-
+  
       break;
 
       case 0:
-
+        limparTela();
         print('Obrigado por usar nossos serviços.');
         continuar = false;
 
