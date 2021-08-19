@@ -5,7 +5,7 @@ void main(){
   String nome;
   nome = stdin.readLineSync()!;
 
-  var arr = nome.split(' ');    //pega a frase e quando identificado o espaço, aloca a frase para um espaço no vetor
+  var arr = nome.split(' ');    //pega a frase e quando identificado o espaço, aloca a palavra para um espaço no vetor
 
 
   Map map = new Map<String, int>();       // instância do map
@@ -26,7 +26,7 @@ void main(){
       map[arr[i]]++;                      // será contabilizada
     }
   }
-  
+
   var resultado = "Resultado: $map";
   print(resultado);               
 
